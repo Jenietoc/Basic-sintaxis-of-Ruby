@@ -1,0 +1,92 @@
+Multiplataforma, orientado a objetos
+amigable con el programador
+en ruby todo es un objeto
+
+for each
+arr.each { |elem| puts elem }
+
+# bad
+result = if some_condition then something else something_else end
+
+# good
+result = some_condition ? something : something_else
+
+# bad
+some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
+
+# good
+if some_condition
+  nested_condition ? nested_something : nested_something_else
+else
+  something_else
+end
+
+# bad
+# boolean expression
+ok = got_needed_arguments and arguments_are_valid
+
+# control flow
+document.save or raise("Failed to save document!")
+
+# good
+# boolean expression
+ok = got_needed_arguments && arguments_are_valid
+
+# control flow
+raise("Failed to save document!") unless document.save
+
+# ok
+# control flow
+document.save || raise("Failed to save document!")
+
+# bad
+if some_condition
+    do_something
+  end
+  
+  # good
+  do_something if some_condition
+  
+  # another good option
+  some_condition && do_something
+
+  # bad
+do_something if !some_condition
+
+# bad
+do_something if not some_condition
+
+# good
+do_something unless some_condition
+
+# another good option
+some_condition || do_something
+
+# bad
+if (x > 10)
+    # body omitted
+  end
+  
+  # good
+  if x > 10
+    # body omitted
+  end
+
+  # bad
+do_something while !some_condition
+
+# good
+do_something until some_condition
+
+# bad
+[0, 1, 2, 3].each do |item|
+    if item > 1
+      puts item
+    end
+  end
+  
+  # good
+  [0, 1, 2, 3].each do |item|
+    next unless item > 1
+    puts item
+  end
